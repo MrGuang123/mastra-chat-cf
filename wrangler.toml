@@ -9,3 +9,8 @@ watch_dir = ".mastra/output"
 
 [env.production]
 name = "mastra-chat-cf"
+
+# KV 存储配置
+# [[kv_namespaces]]
+# binding = "MASTRA_MEMORY"
+# id = "your-kv-namespace-id"  # 需要替换为实际的 KV namespace ID

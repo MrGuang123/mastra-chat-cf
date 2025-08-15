@@ -1,7 +1,6 @@
 import { deepseek } from "@ai-sdk/deepseek";
 import { Agent } from "@mastra/core/agent";
 import { Memory } from "@mastra/memory";
-import { LibSQLStore } from "@mastra/libsql";
 import { qaTool } from "../tools/qa-tool";
 import { codeReviewTool } from "../tools/code-review-tool";
 
@@ -31,8 +30,17 @@ export const studyAssistantAgentDeepSeek = new Agent({
   model: deepseek("deepseek-chat"),
   tools: { qaTool, codeReviewTool },
   memory: new Memory({
-    storage: new LibSQLStore({
-      url: "file:../mastra.db", // 持久化存储学习历史
-    }),
+    // 方案一：内存存储（当前配置）
+    // 适合开发和测试，数据不持久化
+    
+    // 方案二：Cloudflare KV 存储（生产环境推荐）
+    // 需要先安装：npm install @mastra/cloudflare
+    // 然后取消注释下面的配置：
+    // storage: new CloudflareStore({
+    //   bindings: {
+    //     threads: MASTRA_MEMORY, // 需要在 wrangler.toml 中配置
+    //     messages: MASTRA_MEMORY, // 需要在 wrangler.toml 中配置
+    //   },
+    // }),
   }),
 });
