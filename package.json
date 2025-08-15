@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "mastra dev",
     "build": "mastra build",
-    "start": "mastra start"
+    "start": "mastra start",
+    "deploy": "mastra build && wrangler deploy"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@types/node": "^24.2.1",
     "mastra": "^0.10.20",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "wrangler": "^3.114.13"
   }
 }

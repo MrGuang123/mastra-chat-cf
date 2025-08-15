@@ -1,0 +1,10 @@
+name = "mastra-chat-cf"
+main = ".mastra/output/index.mjs"
+compatibility_date = "2024-01-01"
+
+[build]
+command = "npm run build"
+watch_dir = ".mastra/output"
+
+[env.production]
+name = "mastra-chat-cf"
