@@ -1,6 +1,7 @@
 import { Mastra } from "@mastra/core/mastra";
 import { PinoLogger } from "@mastra/loggers";
 import { LibSQLStore } from "@mastra/libsql";
+import { CloudflareDeployer } from "@mastra/deployer-cloudflare";
 import { studyAssistantWorkflow } from "./workflows/study-assistant-workflow";
 import { studyAssistantAgentDeepSeek } from "./agents/study-assistant-agent-deepseek";
 
@@ -14,5 +15,8 @@ export const mastra = new Mastra({
   logger: new PinoLogger({
     name: "Study Assistant Mastra (DeepSeek)",
     level: "info",
+  }),
+  deployer: new CloudflareDeployer({
+    projectName: "mastra-chat-cf",
   }),
 });
